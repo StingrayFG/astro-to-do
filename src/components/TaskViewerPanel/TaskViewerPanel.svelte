@@ -1,6 +1,6 @@
 <script lang='ts'>
   import { actions } from 'astro:actions';
-  import { Arrow90degLeft, ArrowDownLeft, ArrowLeft, Floppy, HandIndexThumb, Trash, XLg } from 'svelte-bootstrap-icons';
+  import { Arrow90degLeft, ArrowDownLeft, ArrowLeft, ExclamationCircle, Floppy, Trash, XLg } from 'svelte-bootstrap-icons';
   import autosize from 'svelte-autosize';
   import { swipeable } from '@react2svelte/swipeable';
   import type { SwipeEventData } from '@react2svelte/swipeable';
@@ -317,3 +317,22 @@ data-testid='container-main-viewer'> <!-- the viewer panel slides to the right i
   </div>
 
 </div>
+
+<!-- notifications -->
+<div class={`w-screen h-20 pt-4
+  fixed left-0
+  flex place-content-center
+  transition-all duration-300
+  ${hasRequestFailed ? 'top-0' : '-top-20'}`}>
+
+    <div class='p-2 h-fit
+    flex gap-2 place-content-center
+    bg-sky-900 drop-shadow-lg'>
+      <p class=''>
+        {'Request failed'}
+      </p>
+      <ExclamationCircle class='h-5 w-5 my-auto
+      text-neutral-200'/>
+    </div>
+
+  </div>
