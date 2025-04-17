@@ -3,6 +3,7 @@ import { actions } from 'astro:actions';
 
 import Layout from 'layouts/Layout.astro';
 import TaskListPanel from 'components/TaskListPanel/TaskListPanel.svelte';
+import TaskViewerPanel from 'components/TaskViewerPanel/TaskViewerPanel.svelte';
 
 import type { Task } from '@prisma/client';
 
@@ -39,11 +40,15 @@ try {
     </div>
 
     <div class='w-screen max-w-[768px] h-dvh z-10
-    grid grid-cols-[1fr] md:grid-cols-[1fr_2fr]'>
-    
+    grid grid-cols-[1fr] md:grid-cols-[1fr_2fr]'> <!-- the viewer panel slides to the right in the mobile version -->
+
       <TaskListPanel 
       preloadedTasks={preloadedTasks} 
       hasPreloadingTasksFailed={hasPreloadingTasksFailed}
+      client:load />
+
+      <TaskViewerPanel 
+      hasLoadedAtLeastOneTask={preloadedTasks && (preloadedTasks.length > 0)}
       client:load />
 
     </div>
