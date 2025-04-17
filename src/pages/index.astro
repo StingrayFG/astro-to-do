@@ -1,11 +1,52 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { actions } from 'astro:actions';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from 'layouts/Layout.astro';
+import TaskListPanel from 'components/TaskListPanel/TaskListPanel.svelte';
+
+import type { Task } from '@prisma/client';
+
+import 'styles/global.css';
+  
+
+let preloadedTasks: Array<Task> = [];
+let hasPreloadingTasksFailed: Boolean = false;
+console.log('load')
+
+try {
+  const { data, error } = await Astro.callAction(actions.task.getAllTasks, null);
+  console.log(data, error)
+
+  if (error) {
+    hasPreloadingTasksFailed = true;
+  } else {
+    preloadedTasks = data;
+  }
+  
+} catch (e) {
+  console.log(e)
+  hasPreloadingTasksFailed = true;
+}
+
 ---
 
-<Layout>
-	<Welcome />
+
+<Layout title=''>
+  <div class='w-screen h-dvh relative
+  grid place-content-center
+  bg-gradient-to-br from-slate-900 to-sky-950'>
+    <div class='noise-bg opacity-40'>
+    </div>
+
+    <div class='w-screen max-w-[768px] h-dvh z-10
+    grid grid-cols-[1fr] md:grid-cols-[1fr_2fr]'>
+    
+      <TaskListPanel 
+      preloadedTasks={preloadedTasks} 
+      hasPreloadingTasksFailed={hasPreloadingTasksFailed}
+      client:load />
+
+    </div>
+
+  </div>
 </Layout>
