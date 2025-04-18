@@ -35,7 +35,7 @@ Use
 npm test
 ```
 
-## Designing & development approach, faced challenges
+## Design & development approach, faced challenges
 
 ### Designing & development approach
 - First, I started from trying to understand how the actions work, and attempting to call them from both the astro and svelte components. After grasping the concept of actions, I created all of the required basic actions, and moved to the client part of the app.
