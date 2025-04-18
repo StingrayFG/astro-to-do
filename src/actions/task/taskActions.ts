@@ -6,11 +6,12 @@ import { taskHandlers } from './taskHandlers';
 
 const taskSchema = z.object({ // SHOULD BE ALWAYS BASED ON THE 'Task' TYPE
   id: z.number(),
-  title: z.string().nullable(),
+  title: z.string(),
   contents: z.string().nullable(),
   priority: z.number(),
   isComplete: z.boolean(),
   editedAt: z.number().nullable(),
+  expiresAt: z.number().nullable(),
 })
 
 

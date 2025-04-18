@@ -43,16 +43,20 @@ const handleGetTaskById = async (input: number): Promise<(Task | null | string)>
   })
 }
 
-
 const handleAddTask = async (input: Task): Promise<Task> =>  {
   return new Promise(async (resolve, reject) => { 
+    if (![-1, 0, 1].includes(input.priority)) {
+      input.priority = 0;
+    }
+
     await prisma.task.create({
       data: {
         title: input.title,
         contents: input.contents,
         priority: input.priority,
         isComplete: input.isComplete,
-        editedAt: Math.floor(Date.now() / 1000)
+        editedAt: Math.floor(Date.now() / 1000),
+        expiresAt: input.expiresAt,
       }
     })
     .then((res: Task) => {
@@ -68,6 +72,10 @@ const handleAddTask = async (input: Task): Promise<Task> =>  {
 
 const handleUpdateTask = async (input: Task): Promise<Task> =>  {
   return new Promise(async (resolve, reject) => { 
+    if (![-1, 0, 1].includes(input.priority)) {
+      input.priority = 0;
+    }
+
     await prisma.task.update({
       where: {
         id: input.id
@@ -77,7 +85,8 @@ const handleUpdateTask = async (input: Task): Promise<Task> =>  {
         contents: input.contents,
         priority: input.priority,
         isComplete: input.isComplete,
-        editedAt: Math.floor(Date.now() / 1000)
+        editedAt: Math.floor(Date.now() / 1000),
+        expiresAt: input.expiresAt,
       }
     })
     .then((res: Task) => {
