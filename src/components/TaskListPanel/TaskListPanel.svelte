@@ -55,8 +55,8 @@
       allTasksStore.set($allTasksStore.filter(t => t.id !== -1))
     }
 
-    selectedTaskStore.set(task)
-    isViewerOpenStore.set(true)
+    selectedTaskStore.set(task);
+    isViewerOpenStore.set(true);
   }
 
   const addTask = () => {
@@ -84,7 +84,8 @@
         ...$allTasksStore
       ])
 
-      selectedTaskStore.set(emptyTask)
+      selectedTaskStore.set(emptyTask);
+      isViewerOpenStore.set(true);
     }
   }
 </script>

@@ -33,6 +33,11 @@
   const handleCloseButton = () => {
     isDeleting = false;
     isViewerOpenStore.set(false);
+
+    allTasksStore.set([
+      ...$allTasksStore.filter(a => a.id !== -1)
+    ])
+    selectedTaskStore.set(null);
   }
 
   const handleSaveButton = async () => {
