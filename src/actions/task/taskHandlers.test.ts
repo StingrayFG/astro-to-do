@@ -8,7 +8,7 @@ import prisma from 'instances/prisma'
 
 describe('taskActions', async () => {
   // SETUP
-  const clientTask = {
+  const clientTask: Task = {
     id: 1,
     title: 'test-title',
     contents: 'test-contents',
@@ -56,7 +56,7 @@ describe('taskActions', async () => {
     const wrap = async () => {
       return await taskHandlers.getTaskById(22)
     }
-    expect(wrap).rejects.toEqual('error')
+    await expect(wrap).rejects.toEqual('error')
   });
 
 
@@ -138,7 +138,7 @@ describe('taskActions', async () => {
         editedAt: 0,
       })
     }
-    expect(wrap).rejects.toEqual('error')
+    await expect(wrap).rejects.toEqual('error')
   });
 
 
@@ -164,7 +164,7 @@ describe('taskActions', async () => {
         id: 22,
       })
     }
-    expect(wrap).rejects.toEqual('error')
+    await expect(wrap).rejects.toEqual('error')
   });
 });
 

@@ -15,7 +15,7 @@ datasource db {
 model Task {
   id            Int       @id @default(autoincrement())
 
-  title         String?
+  title         String
   contents      String?
 
   priority      Int       @default(0)
@@ -23,6 +23,7 @@ model Task {
   isComplete    Boolean   @default(false)
 
   editedAt      Int?
+  expiresAt     Int?
 
   @@map("task")
 }
