@@ -14,7 +14,8 @@ describe('TaskListElement', () => {
     contents: 'test-contents',
     priority: 0,
     isComplete: false,
-    editedAt: 0,
+    editedAt: 171000000,
+    expiresAt: 175000000,
   }
 
   const selectTaskMock = vi.fn()

@@ -17,7 +17,8 @@ describe('TaskListPanel', () => {
     contents: 'test-contents',
     priority: 0,
     isComplete: false,
-    editedAt: 0,
+    editedAt: 171000000,
+    expiresAt: 175000000,
   }
 
   const testAllTasks: Array<Task> = [
@@ -27,7 +28,8 @@ describe('TaskListPanel', () => {
       contents: 'test-contents',
       priority: 1,
       isComplete: true,
-      editedAt: 0,
+      editedAt: 171000000,
+      expiresAt: 175000000,
     },
     {
       id: 2,
@@ -35,7 +37,8 @@ describe('TaskListPanel', () => {
       contents: 'test-contents',
       priority: 1,
       isComplete: false,
-      editedAt: 0,
+      editedAt: 171000000,
+      expiresAt: 175000000,
     },
     testTask
   ]

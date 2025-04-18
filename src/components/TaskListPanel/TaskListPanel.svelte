@@ -74,7 +74,9 @@
         contents: '',
         priority: 0,
         isComplete: false,
-        editedAt: 0
+        editedAt: 0,
+        expiresAt: ((new Date(Date.now() + 86400 * 1000 * 3)).setHours(0,0,0,0) / 1000) 
+        // uses a unix timestamp in seconds (!) generated from the future date
       }
 
       allTasksStore.set([

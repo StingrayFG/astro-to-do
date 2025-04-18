@@ -18,7 +18,8 @@ describe('TaskViewerPanel', () => {
     contents: 'test-contents',
     priority: 0,
     isComplete: false,
-    editedAt: 0,
+    editedAt: 171000000,
+    expiresAt: 175000000,
   }
   const editedTestTask: Task = {
     id: 1,
@@ -26,7 +27,8 @@ describe('TaskViewerPanel', () => {
     contents: 'test-contents-2',
     priority: 1,
     isComplete: true,
-    editedAt: 0,
+    editedAt: 171000000,
+    expiresAt: 175000000,
   }
 
   vi.mock('store', () => ({
@@ -98,7 +100,7 @@ describe('TaskViewerPanel', () => {
     await user.click(screen.getByTestId('button-save'));
     expect(setSpy.mock.calls[0][0]).toEqual(expect.objectContaining({
       ...editedTestTask,
-      editedAt: expect.any(Number)
+      editedAt: expect.any(Number),
     }))
   });
 

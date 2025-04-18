@@ -137,7 +137,7 @@
   $effect(() => {
     autosize.update(textarea);
 	});
-
+  
 </script>
 
 
@@ -287,6 +287,23 @@ data-testid='container-main-viewer'> <!-- the viewer panel slides to the right i
 
       </div>
     
+
+      <div class='pt-4 px-2'>
+        <p class='ml-2
+        text-sm text-sky-500'>
+          {'Expiration'}
+        </p>
+        <input class='w-full
+        border-b border-sky-500 focus:bg-sky-500/20'
+        value={(new Date(editedTask.expiresAt! * 1000)).toISOString().slice(0, 10)}
+        oninput={(event) => {
+          // uses a unix timestamp in seconds (!) generated from the chosen date
+          editedTask!.expiresAt = ((new Date(event?.target?.value)).setHours(0,0,0,0) / 1000)
+        }}
+        type='date'
+        data-testid='input-expiration'/>
+      </div>
+
       <div class='pt-4 px-2'>
         <p class='ml-2
         text-sm text-sky-500'>
