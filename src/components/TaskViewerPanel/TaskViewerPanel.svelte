@@ -36,7 +36,7 @@
   }
 
   const handleSaveButton = async () => {
-    if (editedTask) {
+    if (editedTask && editedTask.title) {
       // id = -1 is reserved for the newly created tasks which are yet to be sent to the server
       if (editedTask.id === -1) {
         const { data, error } = await actions.task.addTask(editedTask)
@@ -182,7 +182,8 @@ data-testid='container-main-viewer'> <!-- the viewer panel slides to the right i
   
         <button class={`common-button
         ${getCanRevertChanges() ? '' : 'opacity-50 pointer-events-none'}`}
-        onclick={handleRevertButton}>
+        onclick={handleRevertButton}
+        data-testid='button-cancel'>
           <p class=''>
             {'Cancel'}
           </p>

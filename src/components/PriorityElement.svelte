@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import { ChevronCompactRight } from 'svelte-bootstrap-icons';
+  import { ChevronCompactRight, ExclamationCircle } from 'svelte-bootstrap-icons';
 
   let props = $props();
 </script>
@@ -17,6 +17,8 @@ relative grid place-items-center'>
       <ChevronCompactRight class='text-blue-500' />
       <ChevronCompactRight class='text-blue-500 -ml-2.5' />
       <ChevronCompactRight class='text-blue-500 -ml-2.5' />
+    {:else}
+      <ExclamationCircle class='text-red-500' />
     {/if}
   </div>
 </div>

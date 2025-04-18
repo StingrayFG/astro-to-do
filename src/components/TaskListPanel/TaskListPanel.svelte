@@ -45,6 +45,7 @@
       filterTasks();
     }
 	});
+  
 
   // FUNCTIONS
   const selectTask = (task: Task) => {
@@ -157,7 +158,8 @@ data-testid='container-main-list'>
     {#if props?.hasPreloadingTasksFailed}
       <div class='w-full mt-[40vh]
       flex gap-2 place-content-center
-      transition-all duration-300 animate-fadein'>
+      transition-all duration-300 animate-fadein'
+      data-testid='container-failed-to-load-tasks'>
         <p class='text-xl'>
           {'Failed to load the tasks'}
         </p>
@@ -167,7 +169,8 @@ data-testid='container-main-list'>
     {:else if ($allTasksStore && ($allTasksStore.length === 0) && hasMounted)}
       <div class='w-full mt-[40vh]
       flex gap-2 place-content-center
-      transition-all duration-300 animate-fadein'>
+      transition-all duration-300 animate-fadein'
+      data-testid='container-nothing-found'>
         <p class='text-xl'>
           {'Nothing found'}
         </p>
