@@ -1,0 +1,9 @@
+services:
+  astro-to-do:
+    image: astro-to-do
+    container_name: astro-to-do
+    restart: always
+    ports:
+      - 4422:4422
+    volumes:
+    - ./sqlite-data:/app/prisma/sqlite-data
